@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import Card from './Card';
+
 
 function App() {
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("https://rickandmortyapi.com/api/character");
+      const data = await response.json();
+      const dataFilteredResult = data.results;
+      const newData = dataFilteredResult.map(item => {return {...item, isOpend: false}})
+      setApiData(newData);
+    }
+    fetchData();
+
+    // function only called once because of empty dependency array
+  }, []);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+   {apiData.map((char) => {
+        return (
+          <Card char={char}/>
+        );
+      })}
+      </div>
+  )
 }
 
 export default App;

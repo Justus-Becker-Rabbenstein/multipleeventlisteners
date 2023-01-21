@@ -1,3 +1,6 @@
+# Multiple event listeners for conditional rendering of API data
+e.g. show more button for every item of fetched API data that conditionaly renders stuff
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
