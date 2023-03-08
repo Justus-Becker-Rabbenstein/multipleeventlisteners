@@ -1,3 +1,6 @@
+# Tech Stack
+React (HTML, styled-components, JavaScript)
+
 # Multiple event listeners for conditional rendering of API data
 e.g. show more button for every item of fetched API data that conditionaly renders stuff
 
